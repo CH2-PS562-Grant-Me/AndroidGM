@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="birugm">#6E85B7</color>
+    <color name="birucompo">#4464AA</color>
+    <color name="abutextoff">#697183</color>
+    <color name="abubtnoff">#C7C8CA</color>
+
 </resources>
