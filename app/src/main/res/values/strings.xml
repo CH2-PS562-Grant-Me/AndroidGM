@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">GrantMe</string>
     <string name="copyright">Copyright (C) 2023 by CH2-PS562</string>
+    <string name="kata1">Langkah kecilmu saat mencari beasiswa adalah investasi untuk masa depanmu. Tetap semangat!</string>
+    <string name="kata2">Tantangan mencari beasiswa adalah bagian dari perjalananmu menuju sukses. Teruskan perjuanganmu!</string>
+    <string name="kata3">Setiap usahamu membawamu lebih dekat kepada beasiswa yang diimpikan. Percayalah pada potensimu dan teruslah berjuang.</string>
+    <string name="title1">Investasi Masa Depan</string>
+    <string name="title2">Tantangan Perjalanan Sukses</string>
+    <string name="title3">Perjuangan Menuju Impian</string>
+    <string name="lanjut">Lanjut</string>
 </resources>
