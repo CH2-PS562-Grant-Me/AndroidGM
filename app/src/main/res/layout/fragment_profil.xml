@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".ui.fragment.ProfilFragment">
+
+
+    <Button
+        android:id="@+id/keluarprofil"
+        android:layout_width="359dp"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_daftar"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="Keluar"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textDaftar5"
+        android:layout_width="302dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Pengaturan Akun"
+        android:textColor="#161C2B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pict_profile" />
+
+    <TextView
+        android:id="@+id/textDaftar6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Lainnya"
+        android:textColor="#161C2B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kata_sandi" />
+
+    <TextView
+        android:id="@+id/labelnale6"
+        android:layout_width="55dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Profil"
+        android:textColor="#161C2B"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/info_pribadi"
+        android:layout_width="344dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        app:drawableRightCompat="@drawable/arrow_forward"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/poppins"
+        android:paddingTop="5dp"
+        android:text="Informasi Pribadi"
+        android:textColor="#161C2B"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDaftar5"
+        app:drawableLeftCompat="@drawable/icon_infoprib" />
+
+    <TextView
+        android:id="@+id/kata_sandi"
+        android:layout_width="344dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/icon_password"
+        android:drawableRight="@drawable/arrow_forward"
+        android:drawablePadding="12dp"
+        android:fontFamily="@font/poppins"
+        android:paddingStart="2dp"
+        android:paddingTop="5dp"
+        android:text="Kata Sandi"
+        android:textColor="#161C2B"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_pribadi" />
+
+    <TextView
+        android:id="@+id/bantuan"
+        android:layout_width="344dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/icon_bantuan"
+        android:drawableRight="@drawable/arrow_forward"
+        android:drawablePadding="12dp"
+        android:fontFamily="@font/poppins"
+        android:paddingStart="2dp"
+        android:paddingTop="5dp"
+        android:text="Bantuan"
+
+        android:textColor="#161C2B"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDaftar6" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/pict_profile"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="20dp"
+        app:shapeAppearanceOverlay="@style/roundedimage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelnale6"
+        tools:src="@drawable/default_pict" />
+
+    <TextView
+        android:id="@+id/namapengguna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:hint="nama pengguna"
+        android:paddingStart="1dp"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+        android:textColorHint="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/pict_profile"
+        app:layout_constraintTop_toTopOf="@+id/pict_profile" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="namapengguna" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="namapengguna" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

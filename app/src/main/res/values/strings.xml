@@ -8,4 +8,35 @@
     <string name="title2">Tantangan Perjalanan Sukses</string>
     <string name="title3">Perjuangan Menuju Impian</string>
     <string name="lanjut">Lanjut</string>
+    <string name="temukan">Temukan Beasiswamu dan Raih Impianmu</string>
+    <string name="daftar">Daftar</string>
+    <string name="masuk">Masuk</string>
+    <string name="grantme">Grant Me</string>
+    <string name="welcome">Welcome to</string>
+    <string name="registrasi">Registrasi Akun</string>
+    <string name="nama_regis">Nama Lengkap</string>
+    <string name="email_regis">E-Mail</string>
+    <string name="kata_sandi">Kata Sandi</string>
+    <string name="data_ipk">IPK</string>
+    <string name="data_sertif">Sertifikasi</string>
+    <string name="data_sertif_pro">Sertifikasi Professional</string>
+    <string name="data_prestasi">Prestasi Nasional</string>
+    <string name="komp_nasional">Kompetisi Top 3 Nasional</string>
+    <string name="komp_internasional">Prestasi Internasional</string>
+    <string name="data_magang">Pengalaman Magang</string>
+    <string name="data_kepanitiaan">Pengalaman Kepanitiaan</string>
+    <string name="hai">Hai</string>
+    <string name="temukan_beasiwa">Temukan beasiswa idamanmu!</string>
+    <string name="rekomendasi">Rekomendasi Beasiswa Anda</string>
+    <string name="lihar_semua">Lihat semua</string>
+    <string name="semua_beasiswa">Semua beasiswa</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="registrasiluar">Registrasi</string>
+<!--    <string name=""></string>-->
+<!--    <string name=""></string>-->
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="16dp"
+    android:id="@+id/grid_artikel"
+    android:elevation="10dp"
+    android:background="@drawable/form_daftar">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <TextView
+            android:id="@+id/namabeaArtikel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:hint="nama beasiswa"
+            android:padding="0dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/univArt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_mediumitalic"
+            android:hint="univ"
+            android:padding="0dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/namaPenerimaArt"
+            app:layout_constraintTop_toTopOf="@+id/namaPenerimaArt" />
+
+        <TextView
+            android:id="@+id/ulasanArt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/poppins_light"
+            android:hint="Ulasan"
+            android:padding="0dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/namaPenerimaArt"
+            app:layout_constraintTop_toBottomOf="@+id/namaPenerimaArt" />
+
+        <TextView
+            android:id="@+id/namaPenerimaArt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:hint="nama_penerima"
+            android:padding="0dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/namabeaArtikel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.GrantMe" parent="Base.Theme.GrantMe" />
+    <style name="roundedimage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18dp</item>
+        <item name="color">#6B729A</item>
+    </style>
 </resources>
