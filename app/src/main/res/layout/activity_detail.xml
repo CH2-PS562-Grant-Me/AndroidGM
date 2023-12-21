@@ -49,9 +49,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/poppins"
-            android:gravity="fill_horizontal"
+            android:gravity="fill_vertical"
             android:hint="test"
             android:padding="0dp"
             android:paddingStart="16dp"
@@ -61,6 +61,7 @@
             android:textColor="#000000"
             android:textColorHint="@color/black"
             android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sisawaktudetail2" />
@@ -134,7 +135,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="32dp"
-            android:background="@drawable/form_daftar"
+
             android:fontFamily="@font/poppins_light"
             android:hint="sisa waktu"
             android:padding="0dp"

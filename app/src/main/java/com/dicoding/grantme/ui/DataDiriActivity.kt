@@ -3,7 +3,9 @@ package com.dicoding.grantme.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.dicoding.grantme.R
@@ -25,6 +27,7 @@ class DataDiriActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDataDiriBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.probarData.visibility = View.GONE
         setupAction()
     }
 
@@ -52,37 +55,39 @@ class DataDiriActivity : AppCompatActivity() {
                 lombaInter,
                 magang,
                 kepanitiaan
-            )
-                .observe(this@DataDiriActivity) { result ->
-                    when (result) {
-                        is ResultState.Loading -> {
-                            binding.probarData.visibility = View.GONE
-                        }
+            ).observe(this@DataDiriActivity) { result ->
+                when (result) {
+                    is ResultState.Loading -> {
+                        //binding.probarData.visibility = View.VISIBLE
+                        binding.btnSimpan.isEnabled = false
+                    }
 
-                        is ResultState.Success<*> -> {
-                            binding.probarData.visibility = View.GONE
-                            val response: RegistResponse = result.data as RegistResponse
-                            AlertDialog.Builder(this).apply {
-                                setTitle("Berhasil!")
-                                setMessage(response.message)
-                                setPositiveButton("Lanjut") { _, _ ->
-                                    val intent =
-                                        Intent(this@DataDiriActivity, MainActivity::class.java)
-                                    startActivity(intent)
-                                    finish()
-                                }
-                                create()
-                                show()
+                    is ResultState.Success<*> -> {
+                        binding.probarData.visibility = View.GONE
+                        binding.btnSimpan.isEnabled = true
+                        val response: RegistResponse = result.data as RegistResponse
+                        AlertDialog.Builder(this@DataDiriActivity).apply {
+                            setTitle("Berhasil!")
+                            setMessage(response.message)
+                            setPositiveButton("Lanjut") { _, _ ->
+                                val intent = Intent(this@DataDiriActivity, MainActivity::class.java)
+                                startActivity(intent)
+                                finish()
                             }
-                            binding.btnSimpan.isEnabled = true
-                        }
-
-                        is ResultState.Error -> {
-                            binding.probarData.visibility = View.GONE
-                            binding.btnSimpan.isEnabled = true
+                            show()
                         }
                     }
+
+                    is ResultState.Error -> {
+                        binding.probarData.visibility = View.GONE
+                        binding.btnSimpan.isEnabled = true
+                        val errorMessage = result.error.toString()
+                        Toast.makeText(this@DataDiriActivity, errorMessage, Toast.LENGTH_SHORT).show()
+
+                        //Log.e("API_ERROR", errorMessage, result.error)
+                    }
                 }
+            }
         }
     }
 }
