@@ -1,5 +1,6 @@
 package com.dicoding.grantme.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
@@ -8,14 +9,19 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.dicoding.grantme.R
+import com.dicoding.grantme.di.Injection
+import com.dicoding.grantme.ui.ViewModelFactory
 import com.dicoding.grantme.ui.fragment.ArtikelFragment
 import com.dicoding.grantme.ui.fragment.BeasiswaFragment
 import com.dicoding.grantme.ui.fragment.BerandaFragment
 import com.dicoding.grantme.ui.fragment.ProfilFragment
+import com.dicoding.grantme.ui.welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
     private var selectedTab = 1
+    private lateinit var viewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -138,6 +144,14 @@ class MainActivity : AppCompatActivity() {
                 scaleAnimation.fillAfter = true
                 profilPage.startAnimation(scaleAnimation)
                 selectedTab = 4
+            }
+        }
+        val userRepository = Injection.provideRepository(this)
+        viewModel = ViewModelProvider(this, ViewModelFactory(userRepository))[MainViewModel::class.java]
+        viewModel.getSession().observe(this) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(this, WelcomeActivity::class.java))
+                finish()
             }
         }
     }

@@ -11,6 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.dicoding.grantme.R
 import com.dicoding.grantme.databinding.ActivityLoginBinding
+import com.dicoding.grantme.ui.DataDiriActivity
 import com.dicoding.grantme.ui.ViewModelFactory
 import com.dicoding.grantme.ui.main.MainActivity
 
@@ -61,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
             loginResponse?.isLogin?.let { userResult ->
                 if (userResult) {
                     binding.probarLogin.visibility = View.VISIBLE
-                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    val intent = Intent(this@LoginActivity, DataDiriActivity::class.java)
                     startActivity(intent)
                     finish()
                 }

@@ -17,7 +17,7 @@ data class LoginResponse(
 	val status: Int? = null
 )
 
-data class Data(
+data class DataLogin(
 
 	@field:SerializedName("id")
 	val id: Int? = null,

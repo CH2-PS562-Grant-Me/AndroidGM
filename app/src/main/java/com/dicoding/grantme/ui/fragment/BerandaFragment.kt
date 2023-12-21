@@ -1,60 +1,84 @@
 package com.dicoding.grantme.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dicoding.grantme.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.grantme.databinding.FragmentBerandaBinding
+import com.dicoding.grantme.di.Injection
+import com.dicoding.grantme.ui.ViewModelFactory
+import com.dicoding.grantme.ui.adapter.RecomAdapter
+import com.dicoding.grantme.ui.detailBeasiswa.DetailActivity
+import com.dicoding.grantme.ui.main.MainViewModel
+import com.dicoding.grantme.ui.welcome.WelcomeActivity
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BerandaFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BerandaFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var recomAdapter: RecomAdapter
+    private lateinit var viewModel: MainViewModel
+    private lateinit var binding: FragmentBerandaBinding // Replace with your actual binding class
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_beranda, container, false)
+    ): View {
+        binding = FragmentBerandaBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BerandaFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BerandaFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val userRepository = Injection.provideRepository(requireContext())
+        viewModel = ViewModelProvider(this, ViewModelFactory(userRepository))[MainViewModel::class.java]
+
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(requireContext(), WelcomeActivity::class.java))
+                requireActivity().finish()
+            } else {
+                showList()
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            if (user.isLogin) {
+                viewModel.getAllScholarship()
+            }
+        }
+    }
+
+    private fun showList() {
+        recomAdapter = RecomAdapter { recom ->
+            val intent = Intent(requireContext(), DetailActivity::class.java)
+            intent.putExtra(DetailActivity.ID, recom.id)
+            intent.putExtra(DetailActivity.NAME, recom.nama)
+            intent.putExtra(DetailActivity.DESCRIPTION, recom.deskripsi)
+            intent.putExtra(DetailActivity.PICTURE, recom.imgUrl)
+            startActivity(intent)
+        }
+
+        binding.rvScholar.apply {
+            layoutManager = GridLayoutManager(requireContext(), 2)
+            adapter = recomAdapter
+        }
+
+        viewModel.getAllScholarship() // Where is `token` defined?
+
+     viewModel.preResponse.observe(viewLifecycleOwner) { response ->
+            Log.d("List Story", "onCreate: $response")
+            response?.let {
+                recomAdapter.submitList(it.dataPre)
+            }
+        }
     }
 }

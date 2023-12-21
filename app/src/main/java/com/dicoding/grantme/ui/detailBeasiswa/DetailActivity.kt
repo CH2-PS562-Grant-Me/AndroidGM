@@ -9,4 +9,16 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
     }
+
+    companion object {
+        const val ID = "ID"
+        const val NAME = "NAME"
+        const val DESCRIPTION = "DESCRIPTION"
+        const val PICTURE = "PICTURE"
+
+        var id: String = ""
+        var name: String = ""
+        var description: String? = null
+        var picture: String? = null
+    }
 }

@@ -5,21 +5,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.fragment.BeasiswaFragment">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLa"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/semua_beasiswa"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_shape"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/myPagerView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/pToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                android:id="@+id/titleText"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </androidx.appcompat.widget.Toolbar>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/background_shape"
+            android:backgroundTint="@color/white"
+            android:padding="8dp"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/birugm"
+            app:tabMaxWidth="0dp"
+            app:tabMode="scrollable"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="12sp"
+            app:tabTextColor="@color/birucompo" />
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/myPagerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLa">
+    </androidx.viewpager.widget.ViewPager>
 </androidx.constraintlayout.widget.ConstraintLayout>

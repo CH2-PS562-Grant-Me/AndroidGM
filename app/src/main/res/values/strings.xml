@@ -27,14 +27,24 @@
     <string name="data_kepanitiaan">Pengalaman Kepanitiaan</string>
     <string name="hai">Hai</string>
     <string name="temukan_beasiwa">Temukan beasiswa idamanmu!</string>
-    <string name="rekomendasi">Rekomendasi Beasiswa Anda</string>
+    <string name="rekomendasi">Rekomendasi Beasiswa Untuk Anda</string>
     <string name="lihar_semua">Lihat semua</string>
     <string name="semua_beasiswa">Semua beasiswa</string>
     <string name="deskripsi">Deskripsi</string>
     <string name="registrasiluar">Registrasi</string>
-<!--    <string name=""></string>-->
-<!--    <string name=""></string>-->
-
+    <string name="simpan">Simpan</string>
+    <string name="ipk">IPK</string>
+    <string name="sertifikasi">Sertifikasi</string>
+    <string name="prestasinasional">Prestasi Nasional</string>
+    <string name="lombanasional">Lomba Nasional</string>
+    <string name="prestasiinter">Prestasi Internasional</string>
+    <string name="lombainter">Lomba Internasional</string>
+    <string name="magang">Magang</string>
+    <string name="kepanitiaan">Kepanitiaan</string>
+    <string name="masukkanangka">Masukkan jumlah (angka) </string>
+    <string name="lastipk">IPK Terakhir </string>
+    <string name="datadiri">Data Diri </string>
+    <string name="sisa_hari_text">Sisa Hari: %d</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
