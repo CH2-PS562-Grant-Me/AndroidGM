@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.grantme.databinding.FragmentBerandaBinding
 import com.dicoding.grantme.di.Injection
+import com.dicoding.grantme.ui.DataDiriActivity
 import com.dicoding.grantme.ui.ViewModelFactory
 import com.dicoding.grantme.ui.adapter.RecomAdapter
 import com.dicoding.grantme.ui.detailBeasiswa.DetailActivity
@@ -29,16 +30,22 @@ class BerandaFragment : Fragment() {
     ): View {
         binding = FragmentBerandaBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.fabEdit.setOnClickListener {
+            val intent = Intent(requireContext(), DataDiriActivity::class.java)
+            startActivity(intent)
+        }
         val userRepository = Injection.provideRepository(requireContext())
         viewModel =
-            ViewModelProvider(this, ViewModelFactory(userRepository))[MainViewModel::class.java]
+            ViewModelProvider(this, ViewModelFactory(userRepository))[MainViewModel::
+            class.java]
 
-        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+        viewModel.getSession().observe(viewLifecycleOwner)
+        { user ->
             if (!user.isLogin) {
                 startActivity(Intent(requireContext(), WelcomeActivity::class.java))
                 requireActivity().finish()
