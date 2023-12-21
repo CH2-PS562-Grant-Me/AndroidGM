@@ -1,5 +1,6 @@
 package com.dicoding.grantme.data.retrofit
 
+import com.dicoding.grantme.data.response.ArticleResponse
 import com.dicoding.grantme.data.response.LoginResponse
 import com.dicoding.grantme.data.response.PredictResponse
 import com.dicoding.grantme.data.response.RegistResponse
@@ -7,8 +8,11 @@ import com.dicoding.grantme.data.response.ScholarshipResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
 //import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ApiService {
     @FormUrlEncoded
@@ -41,9 +45,13 @@ interface ApiService {
 
     @GET("scholarships")
     suspend fun getAllScholarship(
-        // @Header("Authorization") token: String,
+        @Query("jenis_beasiswa") jenisBeasiswa: String
     ): ScholarshipResponse
 
+    @GET("articles")
+    @Headers("token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZW1haWwiOiJha21hbDFAZ21haWwuY29tIiwiaWF0IjoxNzAyOTA3MDQ5LCJleHAiOjE3ODkzMDcwNDl9.SThSvEGFOHGZKsXa715kEpNEbF9f8yogWbcVpc8SFOk")
+    suspend fun getAllArticles(
+    ): ArticleResponse
 
 //    @Multipart
 //    @POST("stories")

@@ -7,41 +7,55 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.dicoding.grantme.data.UserRepository
 import com.dicoding.grantme.data.pref.UserModel
+import com.dicoding.grantme.data.response.ArticleResponse
+import com.dicoding.grantme.data.response.DataItem
 import com.dicoding.grantme.data.response.PredictResponse
 import com.dicoding.grantme.data.response.ScholarshipResponse
 import kotlinx.coroutines.launch
-import java.io.File
 
 class MainViewModel(private val repository: UserRepository) : ViewModel() {
-    private val _storyResponse = MutableLiveData<ScholarshipResponse>()
-    val storyResponse: LiveData<ScholarshipResponse> = _storyResponse
+
+    private val _scholarships = MutableLiveData<ScholarshipResponse>()
+    val scholarships: LiveData<ScholarshipResponse> get() = _scholarships
+
+    private val _article = MutableLiveData<ArticleResponse>()
+    val article: LiveData<ArticleResponse> get() = _article
+
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> get() = _error
 
     private val _predict = MutableLiveData<PredictResponse>()
     val preResponse: LiveData<PredictResponse> = _predict
 
-    private val _predictResponse = MutableLiveData<PredictResponse>()
-    val addStoryResponse: LiveData<PredictResponse> = _predictResponse
-
-    //    private val _locationResponse = MutableLiveData<StoryResponse>()
-    //    val locationResponse: LiveData<StoryResponse> = _locationResponse
 
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
     }
 
-    fun getAllScholarship() {
+    fun getAllScholarship(jenisBeasiswa: String) {
         viewModelScope.launch {
             try {
-                val response = repository.getallScholarship()
-                _storyResponse.value = response
+                val response = repository.getFilteredScholarships(jenisBeasiswa)
+                _scholarships.value = response
             } catch (e: Exception) {
-                e.printStackTrace()
+                _error.value = "Error fetching scholarships: ${e.message}"
+            }
+        }
+    }
+
+    fun getArticle() {
+        viewModelScope.launch {
+            try {
+                val response = repository.getAllarticle()
+                _article.value = response
+            } catch (e: Exception) {
+                _error.value = "Error fetching scholarships: ${e.message}"
             }
         }
     }
 
     fun uploadPredictData(
-        ipk: Float,
+        IPK: Float,
         sertifikasi: Float,
         sertifikasiProfesional: Float,
         prestasiNasional: Float,
@@ -54,9 +68,8 @@ class MainViewModel(private val repository: UserRepository) : ViewModel() {
         val responseLiveData = MutableLiveData<PredictResponse>()
         viewModelScope.launch {
             try {
-                // Call the repository function to upload data
                 val response = repository.upPredict(
-                    ipk,
+                    IPK,
                     sertifikasi,
                     sertifikasiProfesional,
                     prestasiNasional,
@@ -66,14 +79,15 @@ class MainViewModel(private val repository: UserRepository) : ViewModel() {
                     magang,
                     kepanitiaan
                 )
-                _predict.postValue(response)
+                responseLiveData.postValue(response)
             } catch (e: Exception) {
                 e.printStackTrace()
 
             }
         }
-        return _predict
+        return responseLiveData
     }
+
 //    fun logout() {
 //        viewModelScope.launch {
 //            repository.logout()
@@ -97,6 +111,4 @@ class MainViewModel(private val repository: UserRepository) : ViewModel() {
 //            _addStoryResponse.value = repository.uploadImage(token, file, description, longitude, latitude)
 //        }
 //    }
-
-
 }

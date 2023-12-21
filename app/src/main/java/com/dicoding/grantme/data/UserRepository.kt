@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.dicoding.grantme.data.pref.UserModel
 import com.dicoding.grantme.data.pref.UserPreference
+import com.dicoding.grantme.data.response.ArticleResponse
 import com.dicoding.grantme.data.response.LoginResponse
 import com.dicoding.grantme.data.response.PredictResponse
 import com.dicoding.grantme.data.response.RegistResponse
@@ -36,14 +37,19 @@ class UserRepository private constructor(
         return apiService.login(email, password)
     }
 
-    suspend fun getallScholarship(): ScholarshipResponse {
-        return apiService.getAllScholarship() //"Bearer $token")
+    suspend fun getFilteredScholarships(jenisBeasiswa: String): ScholarshipResponse {
+        return apiService.getAllScholarship(jenisBeasiswa)
+    }
+
+    suspend fun getAllarticle(): ArticleResponse {
+        return apiService.getAllArticles()
     }
 
     suspend fun logout() {
         userPreference.logout()
     }
-    suspend fun upPredict(ipk: Float, sertifikasi: Float,
+    suspend fun upPredict(ipk: Float,
+                          sertifikasi: Float,
                           sertifikasiProfesional: Float,
                           prestasiNasional: Float,
                           lombaNasional: Float,
@@ -52,7 +58,8 @@ class UserRepository private constructor(
                           magang: Float,
                           kepanitiaan: Float
     ): PredictResponse{
-        return apiService.UpPredictSchoalrship(ipk,
+        return apiService.UpPredictSchoalrship(
+            ipk,
             sertifikasi,
             sertifikasiProfesional,
             prestasiNasional,

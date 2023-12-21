@@ -52,16 +52,16 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kata_sandi" />
+        app:layout_constraintTop_toBottomOf="@+id/info_pribadi" />
 
     <TextView
         android:id="@+id/labelnale6"
-        android:layout_width="55dp"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Profil"
-        android:textColor="#161C2B"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,23 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textDaftar5"
         app:drawableLeftCompat="@drawable/icon_infoprib" />
 
-    <TextView
-        android:id="@+id/kata_sandi"
-        android:layout_width="344dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:drawableLeft="@drawable/icon_password"
-        android:drawableRight="@drawable/arrow_forward"
-        android:drawablePadding="12dp"
-        android:fontFamily="@font/poppins"
-        android:paddingStart="2dp"
-        android:paddingTop="5dp"
-        android:text="Kata Sandi"
-        android:textColor="#161C2B"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info_pribadi" />
+
 
     <TextView
         android:id="@+id/bantuan"
@@ -130,7 +114,7 @@
         app:shapeAppearanceOverlay="@style/roundedimage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelnale6"
-        tools:src="@drawable/default_pict" />
+       app:srcCompat="@drawable/default_pict" />
 
     <TextView
         android:id="@+id/namapengguna"

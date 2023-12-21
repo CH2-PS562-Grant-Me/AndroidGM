@@ -30,7 +30,7 @@ class DataDiriActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.btnSimpan.setOnClickListener {
-            val IPK = binding.dataIpk.text.toString().toFloat()
+            val ipk = binding.dataIpk.text.toString().toFloat()
             val sertif = binding.dataSertif.text.toString().toFloat()
             val sertifpro = binding.dataSertifnasional.text.toString().toFloat()
             val presnasional = binding.dataPrestasi.text.toString().toFloat()
@@ -42,11 +42,21 @@ class DataDiriActivity : AppCompatActivity() {
 
             binding.btnSimpan.isEnabled = true
 
-            viewModel.uploadPredictData(IPK, sertif, sertifpro, presnasional, lombanasional, presinter,lombaInter, magang, kepanitiaan )
+            viewModel.uploadPredictData(
+                ipk,
+                sertif,
+                sertifpro,
+                presnasional,
+                lombanasional,
+                presinter,
+                lombaInter,
+                magang,
+                kepanitiaan
+            )
                 .observe(this@DataDiriActivity) { result ->
                     when (result) {
                         is ResultState.Loading -> {
-                            binding.probarData.visibility = View.VISIBLE
+                            binding.probarData.visibility = View.GONE
                         }
 
                         is ResultState.Success<*> -> {
@@ -56,7 +66,8 @@ class DataDiriActivity : AppCompatActivity() {
                                 setTitle("Berhasil!")
                                 setMessage(response.message)
                                 setPositiveButton("Lanjut") { _, _ ->
-                                    val intent = Intent(this@DataDiriActivity, MainActivity::class.java)
+                                    val intent =
+                                        Intent(this@DataDiriActivity, MainActivity::class.java)
                                     startActivity(intent)
                                     finish()
                                 }
@@ -65,9 +76,11 @@ class DataDiriActivity : AppCompatActivity() {
                             }
                             binding.btnSimpan.isEnabled = true
                         }
+
                         is ResultState.Error -> {
                             binding.probarData.visibility = View.GONE
                             binding.btnSimpan.isEnabled = true
+                        }
                     }
                 }
         }

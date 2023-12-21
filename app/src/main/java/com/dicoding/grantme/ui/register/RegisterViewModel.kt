@@ -8,7 +8,9 @@ import com.dicoding.grantme.data.UserRepository
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(private val repository: UserRepository) : ViewModel() {
-    fun register(nama: String, email: String, password: String): LiveData<*> {
+    fun register(
+        nama: String, email: String, password: String
+    ): LiveData<*> {
         val responseLiveData = MutableLiveData<Any>()
 
         viewModelScope.launch {

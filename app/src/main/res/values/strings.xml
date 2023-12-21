@@ -44,7 +44,9 @@
     <string name="masukkanangka">Masukkan jumlah (angka) </string>
     <string name="lastipk">IPK Terakhir </string>
     <string name="datadiri">Data Diri </string>
-    <string name="sisa_hari_text">Sisa Hari: %d</string>
+    <string name="daftarbea">Daftar Beasiswa</string>
+    <string name="sisa_hari_text">Tersisa %d hari lagi.</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

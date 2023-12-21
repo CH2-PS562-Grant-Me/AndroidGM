@@ -7,6 +7,8 @@
     app:cardCornerRadius="16dp"
     android:id="@+id/grid_home"
     android:elevation="10dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginStart="18dp"
     android:background="@drawable/form_daftar">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -32,6 +34,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/poppins"
             android:hint="nama beasiswa"
             android:padding="0dp"
@@ -39,7 +42,7 @@
             android:paddingBottom="0dp"
             android:textColor="#000000"
             android:textColorHint="@color/black"
-            android:textSize="14sp"
+            android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bea_pict" />
 
@@ -57,7 +60,7 @@
             android:paddingBottom="0dp"
             android:textColor="#000000"
             android:textColorHint="@color/black"
-            android:textSize="10sp"
+            android:textSize="8sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/namabeagrid" />
     </androidx.constraintlayout.widget.ConstraintLayout>

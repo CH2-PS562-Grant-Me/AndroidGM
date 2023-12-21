@@ -35,7 +35,8 @@ class BerandaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val userRepository = Injection.provideRepository(requireContext())
-        viewModel = ViewModelProvider(this, ViewModelFactory(userRepository))[MainViewModel::class.java]
+        viewModel =
+            ViewModelProvider(this, ViewModelFactory(userRepository))[MainViewModel::class.java]
 
         viewModel.getSession().observe(viewLifecycleOwner) { user ->
             if (!user.isLogin) {
@@ -52,7 +53,7 @@ class BerandaFragment : Fragment() {
 
         viewModel.getSession().observe(viewLifecycleOwner) { user ->
             if (user.isLogin) {
-                viewModel.getAllScholarship()
+                viewModel.getAllScholarship("Bantuan")
             }
         }
     }
@@ -60,7 +61,8 @@ class BerandaFragment : Fragment() {
     private fun showList() {
         recomAdapter = RecomAdapter { recom ->
             val intent = Intent(requireContext(), DetailActivity::class.java)
-            intent.putExtra(DetailActivity.ID, recom.id)
+            intent.putExtra(DetailActivity.SISA, recom.tanggalPendaftaran)
+            intent.putExtra(DetailActivity.DIBUAT, recom.createdAt)
             intent.putExtra(DetailActivity.NAME, recom.nama)
             intent.putExtra(DetailActivity.DESCRIPTION, recom.deskripsi)
             intent.putExtra(DetailActivity.PICTURE, recom.imgUrl)
@@ -71,10 +73,9 @@ class BerandaFragment : Fragment() {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = recomAdapter
         }
+        viewModel.getAllScholarship("Bantuan")
 
-        viewModel.getAllScholarship() // Where is `token` defined?
-
-     viewModel.preResponse.observe(viewLifecycleOwner) { response ->
+        viewModel.preResponse.observe(viewLifecycleOwner) { response ->
             Log.d("List Story", "onCreate: $response")
             response?.let {
                 recomAdapter.submitList(it.dataPre)
